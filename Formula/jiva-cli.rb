@@ -1,14 +1,17 @@
-# Documentation: https://docs.brew.sh/Formula-Cookbook
-#                https://rubydoc.brew.sh/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class JivaCli < Formula
   RUBY_DEP = "ruby@3"
   VERSION = "0.5.0"
   RUNNING_BUILD = 0
 
-  desc ""
-  homepage ""
-  url ENV["X"] || ENV["JIVA_CLI_TARPATH"] || "file://#{ENV["HOME"]}/Downloads/jiva-cli-#{VERSION}.tar.gz"
+  desc "Tools for managing Jiva installation"
+  homepage "https://www.jiva.ag"
+
+  if File.exist? "#{ENV["HOME"]}/Downloads/jiva-cli-#{VERSION}.tar.gz"
+    url "file://#{ENV["HOME"]}/Downloads/jiva-cli-#{VERSION}.tar.gz"
+  else
+    url "git@github.com:gaia-venture/jiva-cli.git", using: :git, tag: "v#{VERSION}"
+  end
+  head "git@github.com:gaia-venture/jiva-cli.git", using: :git, branch: "main"
   version "#{VERSION}-#{RUNNING_BUILD}"
   sha256 ""
   license ""

@@ -1,20 +1,20 @@
 class JivaCli < Formula
-  RUBY_DEP = "ruby@3"
-  VERSION = "0.5.0"
+  RUBY_DEP = "ruby@3".freeze
+  VERSION = "0.5.0".freeze
+  REVISION = "3d08e8fa4f1e6c7319a9943aaa7be03f5976f0a5".freeze # Needed for brew test-bot
   RUNNING_BUILD = 0
 
   desc "Tools for managing Jiva installation"
   homepage "https://www.jiva.ag"
+  version "#{VERSION}-#{RUNNING_BUILD}"
+  license ""
 
   if File.exist? "#{ENV["HOME"]}/Downloads/jiva-cli-#{VERSION}.tar.gz"
     url "file://#{ENV["HOME"]}/Downloads/jiva-cli-#{VERSION}.tar.gz"
   else
-    url "git@github.com:gaia-venture/jiva-cli.git", using: :git, tag: "v#{VERSION}"
+    url "git@github.com:gaia-venture/jiva-cli.git", using: :git, tag: "v#{VERSION}", revision: REVISION
   end
   head "git@github.com:gaia-venture/jiva-cli.git", using: :git, branch: "main"
-  version "#{VERSION}-#{RUNNING_BUILD}"
-  sha256 ""
-  license ""
 
   depends_on RUBY_DEP
 
@@ -35,5 +35,9 @@ class JivaCli < Formula
     cp ".bundle/config", "#{prefix}/.bundle/config" # No idea why the prefix.install doesn't fix this rubbish
 
     bin.install_symlink "../exe/jiva-cli"
+  end
+
+  test do
+    system "jiva-cli"
   end
 end

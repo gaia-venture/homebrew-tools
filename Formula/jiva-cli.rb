@@ -2,21 +2,21 @@
 #                https://rubydoc.brew.sh/Formula
 # PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
 class JivaCli < Formula
-  RUBY_VERSION = "3"
-  version = "0.0.1"
-  running_build = 0
+  RUBY_DEP = "ruby@3"
+  VERSION = "0.5.0"
+  RUNNING_BUILD = 0
 
   desc ""
   homepage ""
-  url "file:///Users/gja/work/jiva/jiva-cli/foo.tar.gz"
-  version "#{version}-#{running_build}"
+  url ENV["X"] || ENV["JIVA_CLI_TARPATH"] || "file://#{ENV["HOME"]}/Downloads/jiva-cli-#{VERSION}.tar.gz"
+  version "#{VERSION}-#{RUNNING_BUILD}"
   sha256 ""
   license ""
 
-  depends_on "ruby@#{RUBY_VERSION}"
+  depends_on RUBY_DEP
 
   def install
-    ruby_formula = Formula.installed.find { |f| f.name == "ruby@#{RUBY_VERSION}" || f.aliases.include?("ruby@#{RUBY_VERSION}") }
+    ruby_formula = Formula.installed.find { |f| f.name == RUBY_DEP || f.aliases.include?(RUBY_DEP) }
 
     ruby_path = ruby_formula.bin
     system "#{ruby_path}/bundle", "config", "set", "--local", "deployment", "true"

@@ -1,8 +1,8 @@
 class JivaCli < Formula
   RUBY_DEP = "ruby@3".freeze
 
-  VERSION = "0.5.0".freeze
-  REVISION = "3d08e8fa4f1e6c7319a9943aaa7be03f5976f0a5".freeze # Needed for brew test-bot
+  VERSION = "0.7.1".freeze
+  REVISION = "24872ace541b6356487bfac102dec74dd9aa9bf9".freeze # Needed for brew test-bot
   RUNNING_BUILD = 0
 
   desc "Tools for managing Jiva installation"

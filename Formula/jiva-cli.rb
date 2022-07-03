@@ -1,5 +1,7 @@
 class JivaCli < Formula
   RUBY_DEP = "ruby@3".freeze
+  KAFKA_DEP = "kafka".freeze
+  KCAT_DEP = "kcat".freeze
 
   VERSION = "0.20.0".freeze
   REVISION = "3c25c5100611c42de0bf11ba63caf518f02a8123".freeze # Needed for brew test-bot
@@ -18,6 +20,8 @@ class JivaCli < Formula
   head "git@github.com:gaia-venture/jiva-cli.git", using: :git, branch: "main"
 
   depends_on RUBY_DEP
+  depends_on KAFKA_DEP
+  depends_on KCAT_DEP
 
   def install
     ruby_formula = Formula.installed.find { |f| f.name == RUBY_DEP || f.aliases.include?(RUBY_DEP) }

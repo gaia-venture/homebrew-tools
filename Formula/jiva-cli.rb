@@ -3,7 +3,7 @@ class JivaCli < Formula
   KAFKA_DEP = "kafka".freeze
   KCAT_DEP = "kcat".freeze
 
-  VERSION = "0.20.0".freeze
+  VERSION = "0.21.0".freeze
   REVISION = "3c25c5100611c42de0bf11ba63caf518f02a8123".freeze # Needed for brew test-bot
   RUNNING_BUILD = 0
 

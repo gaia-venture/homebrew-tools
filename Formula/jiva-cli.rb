@@ -5,7 +5,7 @@ class JivaCli < Formula
   JQ_DEP = "jq".freeze
 
   VERSION = "0.21.0".freeze
-  REVISION = "3c25c5100611c42de0bf11ba63caf518f02a8123".freeze # Needed for brew test-bot
+  REVISION = "76414346c550d42f8ef0acedc4157a6a02894c5a".freeze # Needed for brew test-bot
   RUNNING_BUILD = 0
 
   desc "Tools for managing Jiva installation"

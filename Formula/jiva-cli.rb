@@ -1,8 +1,11 @@
 class JivaCli < Formula
+  JQ_DEP = "jq".freeze
+  KAFKA_DEP = "kafka".freeze
+  KCAT_DEP = "kcat".freeze
   RUBY_DEP = "ruby@3".freeze
 
-  VERSION = "0.20.0".freeze
-  REVISION = "3c25c5100611c42de0bf11ba63caf518f02a8123".freeze # Needed for brew test-bot
+  VERSION = "0.21.0".freeze
+  REVISION = "76414346c550d42f8ef0acedc4157a6a02894c5a".freeze # Needed for brew test-bot
   RUNNING_BUILD = 0
 
   desc "Tools for managing Jiva installation"
@@ -10,13 +13,16 @@ class JivaCli < Formula
   version "#{VERSION}-#{RUNNING_BUILD}"
   license ""
 
-  if File.exist? "#{ENV["HOME"]}/Downloads/jiva-cli-#{VERSION}.tar.gz"
-    url "file://#{ENV["HOME"]}/Downloads/jiva-cli-#{VERSION}.tar.gz"
+  if File.exist? "#{Dir.home}/Downloads/jiva-cli-#{VERSION}.tar.gz"
+    url "file://#{Dir.home}/Downloads/jiva-cli-#{VERSION}.tar.gz"
   else
     url "git@github.com:gaia-venture/jiva-cli.git", using: :git, tag: "v#{VERSION}", revision: REVISION
   end
   head "git@github.com:gaia-venture/jiva-cli.git", using: :git, branch: "main"
 
+  depends_on JQ_DEP
+  depends_on KAFKA_DEP
+  depends_on KCAT_DEP
   depends_on RUBY_DEP
 
   def install
